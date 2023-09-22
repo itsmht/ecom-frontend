@@ -5,6 +5,7 @@ import Home from './components/Home/Banner/Home';
 
 import Login from './components/Shared/Login';
 import Signup from './components/Shared/Signup/Signup';
+import MobileItem from './components/Products/ElectronicsProducts/MobileItem';
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/home" element={<Home/>}/>
       <Route path = "/signup" element={<Signup/>}/>
       <Route path = "/login" element={<Login/>}/>
+      <Route path="/products" element={<MobileItem/>}/>
         </Routes>
 </BrowserRouter>
       

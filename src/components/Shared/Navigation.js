@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { } from 'react';
 import { Link } from 'react-router-dom';
 // import quirky from '../../images/QUIRKY 3.png'
 import './Searchbar.css'
 const Navigation = () => {
+
+
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // const toggleMobileMenu = () => {
+  //   setIsMobileMenuOpen(!isMobileMenuOpen);
+  // };
+
+
     return (
       <>
+
         <div className="navbar p-4">
   <div className="navbar-start">
     <div className="dropdown">
@@ -35,7 +45,7 @@ const Navigation = () => {
           </ul>
         </details>
       </li>
-      <li><Link>Item 3</Link></li>
+      <li><Link to='/products'>Products</Link></li>
     </ul>
   </div>
   <div className="navbar-end">
@@ -63,6 +73,9 @@ const Navigation = () => {
       <span style={{fontWeight:900}} id="coin-value">100</span> 
       </div>
     </div>
+
+
+    
 
 
 

@@ -1,15 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import QUIRKY from '../../images/QUIRKY 3.png'
+
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => console.log(data);
 
   return (
-    <div className="bg-white min-h-screen flex items-center justify-center">
-      <div className="bg-gray-100 p-8 rounded-lg shadow-md w-80">
-        <h1 className="text-2xl font-semibold mb-4">Login</h1>
+    <div style={{backgroundColor:'#FBBD0A'}} className=" min-h-screen flex items-center justify-center">
+      <div style={{ width: '516px' ,height:"667px",borderRadius:'20.11px'}} className="bg-gray-100 p-8 rounded-lg shadow-md w-80">
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%',alignItems:'center', height: '180px' }}>
+         <img style={{ width: '200px', height: '200px' }} src={QUIRKY} alt="" />
+      </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-medium mb-2" htmlFor="email">Email</label>
@@ -34,7 +38,8 @@ const Login = () => {
           <div className="mt-6">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+              style={{backgroundColor:'#FBBD0A',marginBottom:'20px'}}
+              className=" text-black px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
             >
               Login
             </button>

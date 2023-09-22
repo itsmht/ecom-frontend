@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import QUIRKY from '../../../images/QUIRKY 3.png'
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -121,18 +122,22 @@ const Signup = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen flex items-center justify-center">
-    <div style={{ width: '30%' }} className="bg-gray-100 p-8 rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+    <div style={{backgroundColor:'#FBBD0A'}} className=" min-h-screen flex items-center justify-center">
+    <div style={{ width: '516px' ,height:"667px",borderRadius:'20.11px'}} className="bg-gray-100 p-8 rounded-lg shadow-md">
+    <div style={{ display: 'flex', justifyContent: 'center', width: '100%',alignItems:'center', height: '180px' }}>
+  <img style={{ width: '200px', height: '200px' }} src={QUIRKY} alt="" />
+</div>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="account_name" className="block text-gray-700 text-sm font-medium mb-2">
+          {/* <label htmlFor="account_name" className="block text-gray-700 text-sm font-medium mb-2">
             Name
-          </label>
+          </label> */}
           <input
             type="text"
             id="account_name"
             name="account_name"
+            placeholder='Name'
             value={formData.account_name}
             onChange={handleChange}
             className="px-3 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500"
@@ -141,13 +146,14 @@ const Signup = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="account_phone" className="block text-gray-700 text-sm font-medium mb-2">
+          {/* <label htmlFor="account_phone" className="block text-gray-700 text-sm font-medium mb-2">
             Mobile Number
-          </label>
+          </label> */}
           <div className="flex">
             <select
               name="country_code"
               value={selectedCountryCode}
+             
               onChange={handleCountryCodeChange}
               className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
               required
@@ -162,6 +168,7 @@ const Signup = () => {
               type="text"
               id="account_phone"
               name="account_phone"
+              placeholder='Phone Number'
               value={formData.account_phone}
               onChange={handleChange}
               className="px-3 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500"
@@ -176,13 +183,14 @@ const Signup = () => {
 
 
         <div className="mb-4">
-          <label htmlFor="account_password" className="block text-gray-700 text-sm font-medium mb-2">
+          {/* <label htmlFor="account_password" className="block text-gray-700 text-sm font-medium mb-2">
             Password
-          </label>
+          </label> */}
           <input
             type="password"
             id="account_password"
             name="account_password"
+            placeholder='password'
             value={formData.account_password}
             onChange={handleChange}
             className="px-3 py-2 border border-gray-300 rounded-lg w-full focus:outline-none focus:border-blue-500"
@@ -193,8 +201,9 @@ const Signup = () => {
         <div className="mt-6">
           <button
             type="submit"
+            style={{backgroundColor:'#FBBD0A'}}
             onClick={() => setVerificationPopupOpen(true)}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+            className="text-black px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
           >
             Sign Up
           </button>
@@ -212,11 +221,8 @@ const Signup = () => {
             </button>
           </div> */}
           <div className='mt-5'>
-            <Link className='text-cyan-900' to='/login'>Already signed Up! please Login</Link>
+            <Link className='text-black' to='/login'>Already signed Up! please <span className='text-blue-400 text-bold	'>Login</span></Link>
           </div>
-        
-
-        
       </form>
 
 {/* --------------------- */}
