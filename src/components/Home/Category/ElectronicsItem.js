@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 const ElectronicsItem = () => {
     const[electronics,setElectronics] = useState([]);
 
@@ -10,7 +11,8 @@ const ElectronicsItem = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data.data);
-            setElectronics(data.data)
+            const firstThreeItems = data.data.slice(0, 3);
+            setElectronics(firstThreeItems)
         })
         
         
@@ -24,11 +26,16 @@ const ElectronicsItem = () => {
             
             <div className="card w-96 bg-base-100 shadow-xl">
                 
-              <Link to='/'><img src={item.product_images[0].product_image_value} alt="" /></Link>
+              <Link to='/'><img src={item.images[0]} alt="" /></Link>
           <div className="card-body">
-            <Link to='/'><h2 className="card-title">{item.product.product_name}</h2></Link>
-            <p className='text-left'>Price:{item.product.product_actual_price}</p>
-          
+            <Link to='/'><h2 className="card-title">{item.title}</h2></Link>
+            <p className='text-left'>Price:{item.price}</p>
+            <p className='text-left'>
+                                Rating:
+                                {Array.from({ length: item.rating }, (_, index) => (
+                                   <p>ll</p>
+                                ))}
+                            </p>
           </div>
           </div>
         ))}
