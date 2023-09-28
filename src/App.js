@@ -6,6 +6,7 @@ import Home from './components/Home/Banner/Home';
 import Login from './components/Shared/Login';
 import Signup from './components/Shared/Signup/Signup';
 import MobileItem from './components/Products/ElectronicsProducts/MobileItem';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 
 
@@ -21,6 +22,8 @@ function App() {
       <Route path = "/signup" element={<Signup/>}/>
       <Route path = "/login" element={<Login/>}/>
       <Route path="/products" element={<MobileItem/>}/>
+      <Route path="/details/:id" element={<ProductDetails/>}/>
+
         </Routes>
 </BrowserRouter>
       

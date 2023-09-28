@@ -19,7 +19,7 @@ const Navigation = () => {
   <div className="navbar-start">
 
 
-    <img className='' style={{width:"140px",height:'90px'}} src={quirky} alt="" />
+   <Link to='/home'><img className='' style={{width:"140px",height:'90px'}} src={quirky} alt="" /></Link>
     
 
     <div className="dropdown">

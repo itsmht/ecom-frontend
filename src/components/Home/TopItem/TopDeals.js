@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-const ElectronicsItem = () => {
+const TopDeals = () => {
     const[electronics,setElectronics] = useState([]);
 
     useEffect(()=>{
@@ -22,14 +22,14 @@ const ElectronicsItem = () => {
     },[]);
     return (
        <div className='container mx-auto'>
-        <h1 className="text-left text-4xl antialiased font-bold my-4">Electronic Items</h1><br/>
+        <h1 className="text-left text-4xl antialiased font-bold my-4">Top Deals</h1><br/>
           <Link to='/'>  <p className='text-right text-2xl px-5'>view more</p></Link>
         <div className="grid grid-cols-4 gap-x-10 card-normal">
         {electronics.map(item => (
             
             <div className="card bg-base-100 shadow-xl">
                 
-                <Link to={`/details/${item.id}`}>
+                <Link to='/'>
                             <div className="">
                                 <img style={{ width: '300px' }} src={item.images[0]} alt="" />
                             </div>
@@ -37,7 +37,7 @@ const ElectronicsItem = () => {
 
 
           <div className="card-body ">
-            <Link to={`/details/${item.id}`}><h2 className="card-title">{item.title}</h2></Link>
+            <Link to='/'><h2 className="card-title">{item.title}</h2></Link>
             <p className='text-left'>Price:{item.price}</p>
             <p className='text-left'>
     Rating:
@@ -75,4 +75,4 @@ const ElectronicsItem = () => {
     );
 };
 
-export default ElectronicsItem;
+export default TopDeals;
