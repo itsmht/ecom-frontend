@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function FilterProducts({filteredProducts,setFilteredProducts}) {
+function FilterProducts({setMobileItems}) {
 
   const [minPrice, setMinPrice] = useState(''); 
   const [maxPrice, setMaxPrice] = useState(''); 
@@ -23,7 +23,7 @@ function FilterProducts({filteredProducts,setFilteredProducts}) {
 
         if (response.status === 200) {
           // Set the filtered products in state
-          setFilteredProducts(response.data.data);
+          setMobileItems(response.data.data);
         } else {
           console.error('Failed to fetch data from the API.');
         }

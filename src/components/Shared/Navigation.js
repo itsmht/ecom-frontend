@@ -22,7 +22,7 @@ const Navigation = () => {
    <Link to='/home'><img className='' style={{width:"140px",height:'90px'}} src={quirky} alt="" /></Link>
     
 
-    <div className="dropdown">
+    <div className="dropdown"> 
     
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         

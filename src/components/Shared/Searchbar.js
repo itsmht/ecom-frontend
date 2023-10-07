@@ -38,7 +38,7 @@ export default function Searchbar() {
     
 
   return (
-    <div style={{}} className="navbar1">
+    <div style={{backgroundColor:'white'}} className="navbar1">
       <div className="categories-dropdown">
         <select style={{padding:'15px',backgroundColor: 'inherit',border:'1px solid black',color:'black'}} className=' font-bold'>
           <option className=''  value="all">All Categories</option>
@@ -49,7 +49,7 @@ export default function Searchbar() {
       </div>
       <div className="search-bar">
     <input 
-    style={{ color: 'black' }}
+    style={{ color: 'black', border:'1px solid black' }}
      className="search-input border" 
      type="text"
      placeholder="Search..." 

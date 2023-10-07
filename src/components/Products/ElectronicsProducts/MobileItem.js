@@ -5,13 +5,27 @@ import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../../Shared/Footer/Footer';
 import BannerHome from '../../Home/Banner/BannerHome';
 import FilterProducts from '../FilterProducts/FilterProducts';
+import Searchbar from '../../Shared/Searchbar';
 
 const ITEMS_PER_PAGE = 5; // Number of items to display per page
 
 const MobileItem = () => {
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    // const [filteredProducts, setFilteredProducts] = useState([]);
     const [mobileItems, setMobileItems] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+
+    const [selectedRating, setSelectedRating] = useState('all'); // Default is 'all' for all ratings
+    const [sortCriteria, setSortCriteria] = useState('rating'); // Default sorting by rating
+
+    // Filtering
+if (selectedRating !== 'all') {
+    mobileItems = mobileItems.filter(
+      (item) => item.rating >= parseInt(selectedRating)
+    );
+  }
+
+  
+
 
     useEffect(() => {
         fetch('https://corp.glbpowerplant.com/api/homepageProducts')
@@ -28,7 +42,7 @@ const MobileItem = () => {
     const endIndex = startIndex + ITEMS_PER_PAGE;
 
     // const displayedItems = mobileItems.slice(startIndex, endIndex);
-    const displayedItems = filteredProducts.slice(startIndex, endIndex);
+    const displayedItems = mobileItems.slice(startIndex, endIndex);
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
@@ -37,13 +51,17 @@ const MobileItem = () => {
     return (
         <div>
             <Navigation></Navigation>
+            <Searchbar></Searchbar>
+            <BannerHome></BannerHome>
             <h1 className='text-center my-10 text-bold text-4xl'>Mobile Items</h1>
 
-            <div className='grid grid-cols-3 gap-2 flow-col auto-cols-max md:auto-cols-min'>
+            <div className='grid grid-cols-3 gap-4 flow-col auto-cols-max md:auto-cols-min'>
 
 
                 <div>
-                <FilterProducts filteredProducts={filteredProducts} setFilteredProducts={setFilteredProducts}></FilterProducts>
+
+
+                <FilterProducts setMobileItems={setMobileItems}></FilterProducts>
 
 
                 </div>
@@ -52,8 +70,31 @@ const MobileItem = () => {
 
 
                 <div style={{ width: "70%", marginBottom: '10px' }} className='col-start-2 col-span-4'>
+                    {/* count */}
+                    <div className='border p-5 bg-gray-200 flex justify-around'>
+                       <h5 className='text-xl '> {mobileItems.length} items found</h5>
+                        <div>
+                        {/* <label className="block mt-4">Filter by Rating:</label> */}
+  <select
+    value={selectedRating}
+    onChange={(e) => setSelectedRating(e.target.value)}
+    className="border p-2"
+  >
+    <option value="all">Sort By Ratings</option>
+    <option value="5">5 Stars</option>
+    <option value="4">4 Stars</option>
+    <option value="3">3 Stars</option>
+    <option value="2">2 Stars</option>
+    <option value="1">1 Stars</option>
+    
+  </select>
+                        </div>
+                    </div>
+                 
+
+
+
                    <div  style={{marginBottom:'20px'}}>
-                   <BannerHome></BannerHome>
                    </div>
 
 
@@ -98,7 +139,7 @@ const MobileItem = () => {
                                         })}
                                     </p>
                                 </div>
-                                <button className="btn btn-warning">Buy</button>
+                                <button className="btn btn-warning">Details</button>
                             </div>
                         </div>
                     )}

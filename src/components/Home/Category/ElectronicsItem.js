@@ -12,12 +12,12 @@ const ElectronicsItem = () => {
         fetch('https://corp.glbpowerplant.com/api/homepageProducts')
         .then(res=>res.json())
         .then(data=>{
-            console.log(data.data);
+            console.log(data.data[0].slug);
             const firstThreeItems = data.data.slice(0, 4);
             setElectronics(firstThreeItems)
         })
         
-        
+       
 
     },[]);
     return (
@@ -29,7 +29,7 @@ const ElectronicsItem = () => {
             
             <div className="card bg-base-100 shadow-xl">
                 
-                <Link to={`/details/${item.id}`}>
+                <Link to={`/details/${item.slug}`}>
                             <div className="">
                                 <img style={{ width: '300px' }} src={item.images[0]} alt="" />
                             </div>
@@ -37,7 +37,7 @@ const ElectronicsItem = () => {
 
 
           <div className="card-body ">
-            <Link to={`/details/${item.id}`}><h2 className="card-title">{item.title}</h2></Link>
+            <Link to={`/details/${item.id}`}    ><h2 className="card-title">{item.title}</h2></Link>
             <p className='text-left'>Price:{item.price}</p>
             <p className='text-left'>
     Rating:
