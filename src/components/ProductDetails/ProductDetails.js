@@ -6,6 +6,9 @@ import Navigation from '../Shared/Navigation';
 import Searchbar from '../Shared/Searchbar';
 import banner3 from '../../images/slideshow/banner3.jpg'
 import './ProductDetails.css';
+import Footer from '../Shared/Footer/Footer';
+import { Link } from 'react-router-dom';
+import RelatedProducts from './Relatedproducts/RelatedProducts';
 const ProductDetails = () => {
     
     
@@ -46,9 +49,10 @@ const ProductDetails = () => {
     };
 
   return (
-    <div>
+    <div >
       <Navigation></Navigation>
       <Searchbar></Searchbar>
+    <div style={{marginLeft:'20px',marginRight:'20px'}}>
 
       <div class="grid grid-cols-3 gap-4 mt-20">
         {/* dynamic images */}
@@ -56,9 +60,9 @@ const ProductDetails = () => {
      
 
 
-          <div className='border flex'>
+          <div  className='flex'>
                      {/* Render dynamic images */}
-        <div style={{width:'150px'}} className='border flex flex-col justify-center content-center'>
+        <div style={{width:'150px'}} className='flex flex-col justify-center content-center'>
         {productDetails.product_images &&
           productDetails.product_images.map((imageUrl, index) => (
             <div key={index} onClick={() => handleImageClick(index)}>
@@ -74,7 +78,7 @@ const ProductDetails = () => {
 
 
 
-<div className='border'>
+<div className=''>
           {productDetails.product_images && (
           <div>
             <img
@@ -110,7 +114,7 @@ const ProductDetails = () => {
         if (index < Math.floor(productDetails.ratings)) {
             // Display full gold star for full rating
             return <FontAwesomeIcon icon={faStar} key={index} style={{ color: 'gold' }} />;
-        } else if (index === Math.floor(productDetails.ratings)) {
+        } else if (index === Math.floor(productDetails?.ratings)) {
             // Display a half gold star for the first half
             return (
                 <span key={index}>
@@ -182,7 +186,7 @@ const ProductDetails = () => {
 
         <div>
 
-        <div className="card w-96 bg-gray-100 shadow-xl">
+        <div className="card w-96 bg-gray-200 shadow-xl">
   <div className="card-body">
     <ul className='text-left text-xl space-y-4'>
       <li>Shopping Worldwide</li>
@@ -207,18 +211,43 @@ const ProductDetails = () => {
                
               />
 </div>
-
-
-
-
-
-
         </div>
-  
-
-
-
         </div>
+        
+{/* Grid end */}
+
+
+<div>
+<img
+                className='rounded-lg'
+                width=''
+                height=''
+                src={banner3}
+                alt=''
+               
+              />
+</div>
+
+
+<div className='grid grid-cols-2 gap-4 mt-20'>
+
+  <div>
+
+   <div className='text-left'>
+   <button><Link className='text-2xl text-bold border '>Description</Link></button>
+    <button><Link to={`/details/${slug}/reviews`} className='text-2xl text-bold border ms-5'>Review</Link></button>
+   </div>
+  <div style={{height:'800px'}} className="artboard artboard-horizontal phone-2 border">
+
+  </div>
+
+
+  </div>
+
+</div>
+
+{/* Related products */}
+{/* <RelatedProducts></RelatedProducts> */}
 
 
 
@@ -226,6 +255,10 @@ const ProductDetails = () => {
 
 
 
+<Footer></Footer>
+
+
+    </div>
     </div>
   )
 }
