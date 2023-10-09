@@ -1,7 +1,7 @@
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { Outlet, useParams } from 'react-router';
 import Navigation from '../Shared/Navigation';
 import Searchbar from '../Shared/Searchbar';
 import banner3 from '../../images/slideshow/banner3.jpg'
@@ -9,6 +9,7 @@ import './ProductDetails.css';
 import Footer from '../Shared/Footer/Footer';
 import { Link } from 'react-router-dom';
 import RelatedProducts from './Relatedproducts/RelatedProducts';
+import { Reviews } from './Reviews/Reviews';
 const ProductDetails = () => {
     
     
@@ -19,7 +20,7 @@ const ProductDetails = () => {
 
 
     const { slug } = useParams();
-    console.log(slug);
+    // console.log(slug);
 
 
     const incrementQuantity = () => {
@@ -146,12 +147,12 @@ const ProductDetails = () => {
 <p className='text-2xl my-5' style={{borderBottom:'1px solid black',borderTop:'1px solid black'}}>
    $
 {productDetails.product && productDetails.product[0]
-              ? productDetails.product[0].product_actual_price
+              ? productDetails.product[0].product_discounted_price
               : "Product Name Not Available"}
 
               <span style={{textDecoration:'line-through'}} className='ms-5'> 
                $ {productDetails.product && productDetails.product[0]
-              && productDetails.product[0].product_discounted_price}
+              && productDetails.product[0].product_actual_price}
               </span>
 </p>
 
@@ -189,11 +190,11 @@ const ProductDetails = () => {
         <div className="card w-96 bg-gray-200 shadow-xl">
   <div className="card-body">
     <ul className='text-left text-xl space-y-4'>
-      <li>Shopping Worldwide</li>
-      <li>Free 7 day return if eligible</li>
-      <li>Available cash on delivery</li>
-      <li>supplier will provide bills</li>
-      <li>Minimum buy</li>
+      <li><i class="fa-solid fa-truck-fast"></i> Shipping Worldwide</li>
+      <li><i class="fa-solid fa-person-walking-arrow-loop-left"></i> Free 7 day return if eligible</li>
+      <li><i class="fa-solid fa-wallet"></i> Available cash on delivery</li>
+      <li><i class="fa-solid fa-money-bill-wheat"></i> supplier will provide bills</li>
+      <li><i class="fa-solid fa-cart-shopping"></i> Minimum buy</li>
     </ul>
     
    
@@ -228,6 +229,7 @@ const ProductDetails = () => {
               />
 </div>
 
+<div className="divider"></div> 
 
 <div className='grid grid-cols-2 gap-4 mt-20'>
 
@@ -238,16 +240,24 @@ const ProductDetails = () => {
     <button><Link to={`/details/${slug}/reviews`} className='text-2xl text-bold border ms-5'>Review</Link></button>
    </div>
   <div style={{height:'800px'}} className="artboard artboard-horizontal phone-2 border">
+             <Outlet></Outlet>
+  </div>
+
 
   </div>
 
 
+  <div>
+  <div className="card lg:card-side bg-base-100 shadow-xl">
+  <figure><img src={banner3} alt="Album"/></figure>
+ 
+</div>
   </div>
 
 </div>
 
 {/* Related products */}
-{/* <RelatedProducts></RelatedProducts> */}
+<RelatedProducts></RelatedProducts>
 
 
 
