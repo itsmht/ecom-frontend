@@ -37,7 +37,7 @@ function FilterProducts({setMobileItems}) {
   }, [minPrice, maxPrice]);
 
   return (
-    <div className='border-4  p-4 border-yellow-700'>
+    <div className='p-4'>
       <h1 className='mb-5 text-2xl'>Product Filter</h1>
       <div className="price-inputs flex justify-center">
         <div className="price-input">
