@@ -9,6 +9,7 @@ import MobileItem from './components/Products/ElectronicsProducts/MobileItem';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import { Reviews } from './components/ProductDetails/Reviews/Reviews';
 import { Inventory } from './components/Inventory/Inventory';
+// import ScrollButton from './components/Shared/ScrollButton/ScrollButton';
 
 
 
@@ -33,7 +34,7 @@ function App() {
 
         </Routes>
 </BrowserRouter>
-      
+      {/* <ScrollButton></ScrollButton> */}
       </header>
     </div>
   );

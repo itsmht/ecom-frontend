@@ -6,6 +6,7 @@ import Footer from '../../Shared/Footer/Footer';
 import BannerHome from '../../Home/Banner/BannerHome';
 import FilterProducts from '../FilterProducts/FilterProducts';
 import Searchbar from '../../Shared/Searchbar';
+import { Link } from 'react-router-dom';
 
 const ITEMS_PER_PAGE = 5; // Number of items to display per page
 
@@ -104,8 +105,9 @@ if (selectedRating !== 'all') {
                     <div>
                     {displayedItems.map(item =>
                         <div className="card lg:card-side bg-yellow-50 shadow-xl mb-10" key={item.id}>
-                            <img style={{ width: '300px' }} src={item.images[0]} alt="Product" />
-                            <div className="card-body">
+                            <img style={{ width: '250px' }} src={item.images[0]} alt="Product" />
+                            <div className="card-body grid grid-cols-2 gap-2">
+                                <div className=''>
                                 <h2 className="card-title text-xl font-bold">{item.title}</h2>
                                 <div className="product-info">
                                     <p className='text-start text-gray-600'>
@@ -139,7 +141,11 @@ if (selectedRating !== 'all') {
                                         })}
                                     </p>
                                 </div>
-                                <button className="btn btn-warning">Details</button>
+                                </div>
+                            <div>
+                            <Link to={`/details/${item.slug}`}><button className="btn btn-warning">Details</button></Link> 
+                            </div>
+
                             </div>
                         </div>
                     )}

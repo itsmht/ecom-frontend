@@ -4,7 +4,11 @@ import Searchbar from '../Shared/Searchbar'
 
 export const Inventory = () => {
     const[items,setItems] = useState([]);
+    const [quantity, setQuantity] = useState(1);
+    const [totalPrice, setTotalPrice] = useState(0);
     console.log(items);
+  
+
 
     useEffect(()=>{
         fetch('https://corp.glbpowerplant.com/api/homepageProducts')
@@ -13,14 +17,31 @@ export const Inventory = () => {
             setItems(data.data);
             // console.log(data.data);
         })
-        
-       
-
     },[]);
+    const incrementQuantity = () => {
+        setQuantity(quantity + 1);
+        updateTotalPrice(quantity + 1); 
+      };
+    
+      // Function to decrement the quantity, ensuring it doesn't go below 1
+      const decrementQuantity = () => {
+        if (quantity > 1) {
+          setQuantity(quantity - 1);
+          updateTotalPrice(quantity - 1); 
+        }
+      };
+      const updateTotalPrice = (newQuantity) => {
+        const selectedItem = items.find((item) => item.id === 1); // Adjust item selection as needed
+        if (selectedItem) {
+          const pricePerUnit = selectedItem.discounted_price; // Replace with the actual property name
+          setTotalPrice(pricePerUnit * newQuantity);
+        }
+      };
+      
   return (
     <div>
         <Navigation></Navigation>
-        {/* <Searchbar></Searchbar> */}
+        <Searchbar></Searchbar>
         
         <div style={{
             marginLeft:'20px',
@@ -31,19 +52,50 @@ export const Inventory = () => {
             {
                     items.map((item) => (
                         <>
-                        <div className='flex justify-evenly justify-items-center content-center' key={item.id}>
+                        <div className='flex justify-evenly justify-items-center content-center text-left' key={item.id}>
                             <img width='107px' src={item.thumbnail} alt=''/>
                             <p className='text-bold text-xl mt-7'>{item.title}</p>
                             <p className='text-xl mt-7'> Avilable {item.stock}</p>
                            
                             <button className="btn btn-warning mt-7" onClick={()=>document.getElementById('my_modal_5').showModal()}>Sell</button>
-                            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                            <dialog style={{width:''}} id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                             <div className="modal-box">
                             <div className='flex'>
                             <img width='225px' src={item.thumbnail} alt=''/>
                                 <div className='mt-7'>
                                 <h3 className="font-bold text-2xl">{item.title}</h3>
                                 <p className="pt-2">Available {item.stock}</p>
+                                
+
+                                <div className='mt-5'>
+    
+        
+    <div className='flex items-center'>
+        <div>
+        <p className=''>Quantity</p>
+        <div className='border border-black-200 bg-gray-200 rounded-lg'>    
+            <button className="p-2" onClick={decrementQuantity}>-</button>
+            <span className="mx-2 text-bold">{quantity}</span>
+            <button className="p-2" onClick={incrementQuantity}>+</button>
+        </div>
+        </div>
+        
+        <div style={{marginBottom:'6px'}} className='ml-5'>
+            <p className=''>Price per Unit</p>
+            <p className='border border-black-200 bg-gray-200 rounded-lg p-2'>{item.discounted_price}</p>
+        </div>
+    </div>
+</div>
+
+{/* Total price */}
+<div className='flex mt-5 justify-between'>
+                      <h1 className='text-bold'>Total price</h1>
+                      <h1>{totalPrice}</h1>
+                    </div>
+
+
+
+                                
                                 </div>
                             </div>
 
@@ -52,6 +104,7 @@ export const Inventory = () => {
 
                                 <form method="dialog">
                                    
+                                    <button className="btn mx-3">Procced</button>
                                     <button className="btn">Cancle</button>
                                 </form>
                                 </div>

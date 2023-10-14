@@ -29,7 +29,7 @@ const RelatedProducts = () => {
             
             <div className="card bg-base-100 shadow-xl">
                 
-                <Link to='/'>
+                <Link to={`/details/${item.slug}`}>
                             <div className="">
                                 <img style={{ width: '250px' }} src={item.images[0]} alt="" />
                             </div>

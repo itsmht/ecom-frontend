@@ -16,7 +16,7 @@ const ProductDetails = () => {
     const[productDetails,setProductDetails] = useState({});
     const roundedRating = Math.round(productDetails.ratings);
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
-  const [quantity, setQuantity] = useState(1); // State for quantity
+  const [quantity, setQuantity] = useState(1);
 
 
     const { slug } = useParams();
@@ -231,15 +231,15 @@ const ProductDetails = () => {
 
 <div className="divider"></div> 
 
-<div className='grid grid-cols-2 gap-4 mt-20'>
+<div className='grid grid-cols-3 gap-4 mt-20'>
 
-  <div>
+  <div className='col-span-2 border p-2'>
 
    <div className='text-left'>
-   <button><Link className='text-2xl text-bold border '>Description</Link></button>
+   <button><Link className='text-2xl text-bold border'>Description</Link></button>
     <button><Link to={`/details/${slug}/reviews`} className='text-2xl text-bold border ms-5'>Review</Link></button>
    </div>
-  <div style={{height:'800px'}} className="artboard artboard-horizontal phone-2 border">
+  <div style={{height:'800px'}} className="">
              <Outlet></Outlet>
   </div>
 
