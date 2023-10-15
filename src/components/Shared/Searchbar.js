@@ -49,14 +49,14 @@ export default function Searchbar() {
       </div>
       <div className="search-bar">
     <input 
-    style={{ color: 'black', border:'1px solid black' }}
+    style={{ color: 'black', border:'1px solid black' ,borderEndEndRadius:'0',borderTopRightRadius:'0'}}
      className="search-input border" 
      type="text"
      placeholder="Search..." 
      value={searchQuery}
     onChange={handleInputChange}
      />
-   <span onClick={handleSearch}> <i style={{color:'black'}} className="fas fa-search search-icon"></i></span>
+   <span style={{border:'1px solid black',padding:'10px',borderTopRightRadius:'20px',borderBottomRightRadius:'20px',backgroundColor:'rgb(251, 189, 10)'}} onClick={handleSearch}> <i style={{color:'black'}} className="fas fa-search search-icon"></i></span>
 </div>
 
 <div>

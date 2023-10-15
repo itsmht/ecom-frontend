@@ -17,6 +17,7 @@ const ProductDetails = () => {
     const roundedRating = Math.round(productDetails.ratings);
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  
 
 
     const { slug } = useParams();
