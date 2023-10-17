@@ -8,7 +8,7 @@
         "plugin:react/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 2021,
         "sourceType": "module"
     },
     "plugins": [
@@ -20,5 +20,5 @@
         "no-const-assign": "off",
         "jsx-a11y/anchor-is-valid": "off",
         "react/prop-types": "off"
-      }
+    }
 }
